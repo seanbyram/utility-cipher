@@ -13,22 +13,39 @@
   <body>
     <div class="container">
 
-      <div>
+      <div class="jumbotron"id="header">
         <h1>Cipher Encoder</h1>
+        <hr class="my-4">
+        <p>This is our awesome cipher encoder and decoder</p>
       </div>
 
-      <div class="dropdown">
+
+      <div id="buttons" class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown button
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Caesarian Shift</a>
           <a class="dropdown-item" href="#">Another action</a>
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
+        <button type="submit" class="btn btn-primary">ENCODE</button>
       </div>
 
+      <div id="params"class="">
+        <p id="param1"></p>
+        <select id="drop">
+          <!--<option value="volvo">Volvo</option>-->
+        </select>
+      </div>
 
+      <div id="text-fields">
+        <div class="form-group">
+          <textarea class="form-control" rows="5" id="comment" placeholder="Input Text"></textarea>
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" rows="5" id="comment" placeholder="Output Text"></textarea>
+        </div>
+      </div>
 
 
 
