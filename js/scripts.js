@@ -8,7 +8,7 @@
  */
 function caesar (n, input) {
 
-  var text = input.split("");   // string to array
+  let text = input.split("");   // string to array
 
   for(let i=0; i<text.length; ++i) {
     let char = parseInt(text[i].charCodeAt());    // convert to ascii value
@@ -35,8 +35,31 @@ function caesar (n, input) {
   return text.join("");                   // join all characters back together
 };
 
+/**
+ * Atbash encoding. The Atbash cipher is a substitution cipher with a specific key where the letters of
+ * the  alphabet are reversed. I.e. all 'A's are replaced with 'Z's, all 'B's are replaced with 'Y's, and
+ * so on.
+ */
+function atBash (input) {
 
 
+  let text = input.split("");   // string to array
+
+  for(let i=0; i<text.length; ++i) {
+    let char = parseInt(text[i].charCodeAt());    // convert to ascii value
+    let final = char;
+
+    if(char>96 && char<123) {        //lowercase
+      final = Math.abs((char-122)-97);
+    }
+    else if (char>64 && char<91) {    //uppercase
+      final = Math.abs((char-90)-65);
+    }
+    text[i] = String.fromCharCode(final);
+  }
+
+  return text.join("");
+};
 
 
 
@@ -59,6 +82,15 @@ $(document).ready(function() {
         $(".btn:first-child").text($(this).text());
         $(".btn:first-child").val($(this).text());
 
+        switch ($("#dropdownMenuButton").val()) {
+          case "Caesarian Shift":
+            $("#params").show();
+            break;
+          case "Atbash":
+            $("#params").hide();
+            break;
+
+        };
   });
 
   // Encode click event
@@ -67,13 +99,14 @@ $(document).ready(function() {
     //console.log($("#input").val());
 
     var input = $("#input").val();
-    var output = '';
 
     switch ($("#dropdownMenuButton").val()) {
       case "Caesarian Shift":
         var n = $("#drop").val();
-        output = caesar (n, input);
-        $("#output").val(output);
+        $("#output").val(caesar(n, input));
+        break;
+      case "Atbash":
+        $("#output").val(atBash(input));
         break;
 
     };
